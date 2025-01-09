@@ -19,7 +19,7 @@
 @endsection
 
 @section('content')
-<iframe class="w-full aspect-video ..." src="/events/video/id1.webm"></iframe>
+<iframe class="w-full aspect-video ..." src="/events/video/id1.mp4"></iframe>
  
 @endsection
 
