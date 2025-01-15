@@ -143,7 +143,7 @@
           </a>
         </div>
         <div class="flex flex-row gap-4 mt-4 mb-7">
-          <a href="" class="bg-gray-900 rounded-full hover:bg-gray-800 focus:ring-4 focus:ring-gray-200 text-white font-semibold w-full px-4 sm:px-7 py-2 flex items-center justify-center gap-2 transition duration-200">
+          <a href="{{ url('/shopcart/').'/'.$event->id}}" class="bg-gray-900 rounded-full hover:bg-gray-800 focus:ring-4 focus:ring-gray-200 text-white font-semibold w-full px-4 sm:px-7 py-2 flex items-center justify-center gap-2 transition duration-200">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none" data-config-id="svg-322435-13">
               <path d="M9 10V6C9 4.34315 10.3431 3 12 3V3C13.6569 3 15 4.34315 15 6V10M18 8L18.9172 19.9233C18.9619 20.5041 18.5026 21 17.9201 21H6.07988C5.49737 21 5.03815 20.5041 5.08282 19.9233L6 8H18Z" fill="#F0FDF4" stroke="#111928" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
