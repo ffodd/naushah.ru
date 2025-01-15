@@ -10,8 +10,7 @@ class EventsHomePageController extends Controller
 {
     public function __invoke()
     {
-        $events = EventName::with('eventImages')->inRandomOrder()->limit(5)->get();
+        $events = EventName::with('eventImages')->where('show_main', 1)->limit(3)->get();
         return view('home')->with('event', $events);
-        //dd($events[0]->eventImages[0]->link);
     }
 }

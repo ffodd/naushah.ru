@@ -3,44 +3,18 @@
 @section('seo')
     <link rel="canonical" href="https://naushah.ru"/>
     <meta name="description"
-        content="Погрузитесь в мир аудиопрогулок и спектаклей в наушниках: ваша возможность насладиться культурными событиями где угодно. Исследуйте новые маршруты и позвольте знакомым произведениям вдохновлять вас на каждом шагу. Приятные голоса и качественный звук — всё, что нужно для полного погружения." />
-    <meta name="robots" content="index, follow" />
+        content="Мир аудиоспектаклей в наушниках: уникальные постановки, оживающие в ваших ушах. Слушайте захватывающие истории и наслаждайтесь великолепной режиссурой и озвучкой. Отличное развлечение для тех, кто любит аудиоформаты и путешествия в воображении." />
+    <meta name="robots" content="noindex, nofollow" />
     <meta name="document-state" content="dynamic" />
     <meta name="creator" content="Воронов Виталий Андреевич" />
 @endsection
 
 @push('style')
-<style>
-    .glide {
-    position: relative;
-    width: 100%;
-    box-sizing: border-box;
-    }
-    .glide * {
-    box-sizing: inherit;
-    }
-    .glide__track {
-    overflow: hidden;
-    }
-    .glide__slides {
-    position: relative;
-    width: 100%;
-    list-style: none;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    touch-action: pan-Y;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    white-space: nowrap;
-    display: flex;
-    flex-wrap: nowrap;
-    will-change: transform;
-    } 
-</style>
+<link rel="stylesheet" href="./source/glide.core.min.css">
+<link rel="stylesheet" href="./source/glide.theme.min.css">
 @endpush
 
-@section('title', 'На ушах по Санкт-Петербургу - Спекталки-прогулки в наушниках!')
+@section('title', 'На ушах по Пушкинским горам - Спекталки-прогулки в наушниках!')
 
 @section('header')
     @include('include.header')
@@ -54,21 +28,20 @@
 <!-- finish section 0 -->
 <!-- start section 1 -->
 <section class="flex flex-col items-center w-full md:flex-row">
-    <div class="flex justify-end w-full p-4 md:w-1/2 lg:pl-16 xl:pl-24">
-        <div class="">
+    <div class="flex flex-col justify-center w-full p-4 md:w-1/2 lg:pl-16 xl:pl-24">
         <h1 class="text-sm font-semibold tracking-wider text-[#fc1b7c] uppercase rounded-full mb-4">
             Спектакли - экскурсии
         </h1>
         <h2 class="max-w-2xl mb-4 text-4xl font-bold tracking-tight md:text-3xl lg:text-4xl xl:text-5xl">На ушах<br>
-            <span class="inline-block text-[#0980f3] text-3xl md:text-3xl lg:text-4xl xl:text-5xl">по Санкт-Петербургу</span>
+            <span class="inline-block text-[#0980f3] text-3xl md:text-3xl lg:text-4xl xl:text-5xl">по Пушкинским горам</span>
         </h2>
         <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg xl:text-xl">Увлекательные маршруты, превосходный звук, а также первоклассные актеры, позволят вам погрузиться в новое измерение досуга.</p>
         <a href="#" class="w-min inline-flex items-center justify-center px-5 py-1 xl:py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100">
             Каталог
             <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-        </a>
-        </div>
+        </a> 
     </div>
+
     <div class="w-full md:w-1/2">
         <div class="relative">
             <img src="{{ URL::asset('theme/banner/banner-1-0.webp') }}" class="inset-0 object-cover md:hidden rounded-lg">
@@ -122,11 +95,13 @@
                 С экскурсоводом
             </button>
         </div>
-        <div data-glide-el="track" class="glide__track lg:w-[1000px]">
+        <div data-glide-el="track" class="glide__track">
             <ul class="glide__slides">
                 <li class="glide__slide"><x-cardHomePage :name="$event[0]->name" :desc="$event[0]->short_desc" :price="$event[0]->price" :imageLink="$event[0]->eventImages[0]->link" :alt="$event[0]->eventImages[0]->alt" :id="$event[0]->id"/></li>
                 <li class="glide__slide"><x-cardHomePage :name="$event[1]->name" :desc="$event[1]->short_desc" :price="$event[1]->price" :imageLink="$event[1]->eventImages[0]->link" :alt="$event[1]->eventImages[0]->alt" :id="$event[1]->id"/></li>
                 <li class="glide__slide"><x-cardHomePage :name="$event[2]->name" :desc="$event[2]->short_desc" :price="$event[2]->price" :imageLink="$event[2]->eventImages[0]->link" :alt="$event[2]->eventImages[0]->alt" :id="$event[2]->id"/></li>
+                <li class="glide__slide"><x-cardHomePage :name="$event[3]->name" :desc="$event[3]->short_desc" :price="$event[3]->price" :imageLink="$event[3]->eventImages[0]->link" :alt="$event[3]->eventImages[0]->alt" :id="$event[3]->id"/></li>
+                <li class="glide__slide"><x-cardHomePage :name="$event[4]->name" :desc="$event[4]->short_desc" :price="$event[4]->price" :imageLink="$event[4]->eventImages[0]->link" :alt="$event[4]->eventImages[0]->alt" :id="$event[4]->id"/></li>
             </ul>
         </div>
     </div>
@@ -346,7 +321,7 @@
     {
         type: 'carousel',
         startAt: 0,
-        perView: 3,
+        perView: 5,
         gap: 10,
         autoplay: 5000,
         animationDuration: 1600,

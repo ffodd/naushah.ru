@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e4e7eed170f7766319a45a2f526b879",
+    "content-hash": "2e00c23ff6c7d1daae0b9f3be4626be1",
     "packages": [
         {
             "name": "brick/math",
@@ -1991,6 +1991,47 @@
                 }
             ],
             "time": "2024-11-12T13:57:08+00:00"
+        },
+        {
+            "name": "mtresk/ego-pay-client",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mTresk/EgoPayClient.git",
+                "reference": "dd681c165233657aeff3d7cde09a0b3bd56c924d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mTresk/EgoPayClient/zipball/dd681c165233657aeff3d7cde09a0b3bd56c924d",
+                "reference": "dd681c165233657aeff3d7cde09a0b3bd56c924d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-soap": "*",
+                "php": ">=8.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "mTresk\\EgoPayClient\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxim Tresk",
+                    "email": "djtresk@gmail.com"
+                }
+            ],
+            "description": "Клиент для интернет-эквайринга EgoPay",
+            "support": {
+                "issues": "https://github.com/mTresk/EgoPayClient/issues",
+                "source": "https://github.com/mTresk/EgoPayClient/tree/v0.0.1"
+            },
+            "time": "2024-05-17T10:33:59+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -7899,12 +7940,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }

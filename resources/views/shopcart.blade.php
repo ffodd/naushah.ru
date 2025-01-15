@@ -36,7 +36,7 @@
 <section class="mx-8 lg:container lg:mx-auto mt-12">
     <h3 class="text-gray-600 font-medium text-2xl border-b border-gray-300 pb-2.5 mb-2.5">Куда и кому отправить билеты ?</h3>
     <p class="text-gray-500">Будьте внимательны при вводе</p>
-    <form class="mt-4 flex flex-col lg:flex-row gap-2" action="{{ route('shopcart.submit') }}" method="post">
+    <form class="mt-4 flex flex-col lg:flex-row gap-2" action="{{ route('pays.create') }}" method="post">
         @csrf
         <div class="flex flex-row gap-2">
             <div class="content-center w-1/2">
