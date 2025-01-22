@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\EventName;
 
-class EventType extends Model
+class EventCity extends Model
 {
     public function eventNames()
     {
-      return $this->hasMany(EventName::class, 'id_type');
+      return $this->hasMany(EventName::class, 'id_city');
     }
-
 }

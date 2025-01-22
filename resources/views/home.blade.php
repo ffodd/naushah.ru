@@ -36,6 +36,32 @@
     display: flex;
     flex-wrap: nowrap;
     will-change: transform;
+    }
+    .glide2 {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    }
+    .glide2 * {
+    box-sizing: inherit;
+    }
+    .glide2__track {
+    overflow: hidden;
+    }
+    .glide2__slides {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    touch-action: pan-Y;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    display: flex;
+    flex-wrap: nowrap;
+    will-change: transform;
     } 
 </style>
 @endpush
@@ -80,13 +106,13 @@
     </div>
 </section>
 <!-- finish section 1 -->
-<!-- start section 2 -->
+<!-- start section 2 (Карусель-0) -->
 <section class="lg:mx-auto lg:container py-16 flex flex-row">
     <div class="glide pl-4 pr-4">
         <div class="flex flex-row justify-between items-center">
             <div class="flex flex-row gap-4">
                 <h3 class="text-left mb-4 font-semibold mx-0 text-xl text-gray-900 md:leading-tight lg:text-2xl xl:text-4xl">Экскурсии-спектакли в наушниках</h3>
-                <button type="button" class="hidden md:block text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Хит сезона</button>
+                <button type="button" class="hidden md:block text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Хит сезона</button>
             </div>
             <div class="flex flex-row gap-3" data-glide-el="controls">
                 <button class="rounded-full border-2" data-glide-dir="<">
@@ -124,14 +150,35 @@
         </div>
         <div data-glide-el="track" class="glide__track lg:w-[1000px]">
             <ul class="glide__slides">
-                <li class="glide__slide"><x-cardHomePage :name="$event[0]->name" :desc="$event[0]->short_desc" :price="$event[0]->price" :imageLink="$event[0]->eventImages[0]->link" :alt="$event[0]->eventImages[0]->alt" :id="$event[0]->id"/></li>
-                <li class="glide__slide"><x-cardHomePage :name="$event[1]->name" :desc="$event[1]->short_desc" :price="$event[1]->price" :imageLink="$event[1]->eventImages[0]->link" :alt="$event[1]->eventImages[0]->alt" :id="$event[1]->id"/></li>
-                <li class="glide__slide"><x-cardHomePage :name="$event[2]->name" :desc="$event[2]->short_desc" :price="$event[2]->price" :imageLink="$event[2]->eventImages[0]->link" :alt="$event[2]->eventImages[0]->alt" :id="$event[2]->id"/></li>
+                <li class="glide__slide"><x-cardHomePage :name="$event[0][0]->name" :desc="$event[0][0]->short_desc" :price="$event[0][0]->price" :imageLink="$event[0][0]->eventImages[0]->link" :alt="$event[0][0]->eventImages[0]->alt" :id="$event[0][0]->id"/></li>
+                <li class="glide__slide"><x-cardHomePage :name="$event[0][1]->name" :desc="$event[0][1]->short_desc" :price="$event[0][1]->price" :imageLink="$event[0][1]->eventImages[0]->link" :alt="$event[0][1]->eventImages[0]->alt" :id="$event[0][1]->id"/></li>
+                <li class="glide__slide"><x-cardHomePage :name="$event[0][2]->name" :desc="$event[0][2]->short_desc" :price="$event[0][2]->price" :imageLink="$event[0][2]->eventImages[0]->link" :alt="$event[0][2]->eventImages[0]->alt" :id="$event[0][2]->id"/></li>
+                <li class="glide__slide"><x-cardHomePage :name="$event[0][3]->name" :desc="$event[0][3]->short_desc" :price="$event[0][3]->price" :imageLink="$event[0][3]->eventImages[0]->link" :alt="$event[0][3]->eventImages[0]->alt" :id="$event[0][3]->id"/></li>
+                <li class="glide__slide"><x-cardHomePage :name="$event[0][4]->name" :desc="$event[0][4]->short_desc" :price="$event[0][4]->price" :imageLink="$event[0][4]->eventImages[0]->link" :alt="$event[0][4]->eventImages[0]->alt" :id="$event[0][4]->id"/></li>
             </ul>
         </div>
     </div>
 </section>
 <!-- finish section 2 -->
+<!-- start section 2.2 (Карусель-1) -->
+<section class="lg:mx-auto lg:container pb-16 flex flex-row">
+    <div class="glide2 pl-4 pr-4">
+        <div class="flex flex-row justify-between items-center">
+            <div class="flex flex-row gap-4">
+                <h3 class="text-left mb-4 font-semibold mx-0 text-base text-gray-900 md:leading-tight lg:text-xl xl:text-2xl">Пушкинские Горы</h3>
+            </div>
+        </div>
+        <div class="border-t mb-2"></div>
+        <div data-glide-el="track" class="glide2__track lg:w-[600px]">
+            <ul class="glide2__slides">
+                <li class="glide2__slide"><x-cardHomePage :name="$event[1][0]->name" :desc="$event[1][0]->short_desc" :price="$event[1][0]->price" :imageLink="$event[1][0]->eventImages[0]->link" :alt="$event[1][0]->eventImages[0]->alt" :id="$event[1][0]->id"/></li>
+                <li class="glide2__slide"><x-cardHomePage :name="$event[1][1]->name" :desc="$event[1][1]->short_desc" :price="$event[1][1]->price" :imageLink="$event[1][1]->eventImages[0]->link" :alt="$event[1][1]->eventImages[0]->alt" :id="$event[1][1]->id"/></li>
+                <li class="glide2__slide"><x-cardHomePage :name="$event[1][2]->name" :desc="$event[1][2]->short_desc" :price="$event[1][2]->price" :imageLink="$event[1][2]->eventImages[0]->link" :alt="$event[1][2]->eventImages[0]->alt" :id="$event[1][2]->id"/></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- finish section 2.2 -->
 <!-- start section 2.5 -->
 <section class="lg:mx-auto lg:container">
     <div class="pl-4 pr-4 mt-6 space-y-3">
@@ -343,6 +390,23 @@
 <script src="./source/glide.min.js"></script>
 <script>
     new Glide('.glide',
+    {
+        type: 'carousel',
+        startAt: 0,
+        perView: 5,
+        gap: 10,
+        autoplay: 5000,
+        animationDuration: 1600,
+        breakpoints: {
+            1280: {
+                perView: 3
+            },
+            600: {
+                perView: 2
+            }
+        } 
+    }).mount()
+    new Glide('.glide2',
     {
         type: 'carousel',
         startAt: 0,

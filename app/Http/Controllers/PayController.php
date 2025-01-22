@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\EgoPayService;
-use Illuminate\Support\Facades\Redirect;
+use App\Services\PayService;
+use App\Services\OrderService;
 
 class PayController extends Controller
 {
-    public function create(Request $request, EgoPayService $servicePay)
+
+    public function create(Request $request, PayService $payService, OrderService $orderService)
     {
-        $servicePay->createClient();
-        $urlPay = $servicePay->createPayment();
-        return Redirect::to("$urlPay");
-    }
+        $orderId = $orderService->createOrder($request);
+
+        $payService->payInit($request, $orderId);
+    }     
 }

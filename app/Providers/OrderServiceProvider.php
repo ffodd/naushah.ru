@@ -4,15 +4,15 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class PayServiceProvider extends ServiceProvider
+class OrderServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
      */
     public function register(): void
     {
-        $this->app->bind(PayService::class, function($app) {
-            return new PayService();
+        $this->app->bind(OrderService::class, function($app) {
+            return new OrderService();
         });
     }
 
