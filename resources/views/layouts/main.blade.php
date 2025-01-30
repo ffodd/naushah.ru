@@ -65,7 +65,7 @@
     <!-- Finish script -->
   </head>
 
-  <body class="select-none">
+  <body class="">
 
     @include('include.loadArea')
 

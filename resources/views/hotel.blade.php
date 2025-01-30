@@ -22,7 +22,7 @@
 <section class="lg:mx-auto lg:container">
     <div class="xl:w-3/4 gap-16 items-center py-8 px-4 mx-auto lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
         <div class="">
-            <div class="text-gray-500 sm:text-lg dark:text-gray-400">
+            <div class="text-gray-500 sm:text-lg">
                 <h2 class="mb-4 font-serif text-2xl sm:text-3xl font-thin text-gray-900">{{$hotel->name}}</h2>
                 <div class="text-justify mb-4 text-sm font-normal text-gray-800">
                     <p>{{$hotel->description}}</p>

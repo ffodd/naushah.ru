@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\EventImage;
 use App\Models\EventType;
+use App\Models\EventCity;
 use App\Models\Ticket;
 
 class EventName extends Model
@@ -12,6 +13,11 @@ class EventName extends Model
     public function eventImages()
     {
       return $this->hasMany(EventImage::class);
+    }
+
+    public function eventCity()
+    {
+      return $this->belongsTo(EventCity::class, 'id_city');
     }
 
     public function eventType()

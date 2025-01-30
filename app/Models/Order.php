@@ -7,7 +7,7 @@ use App\Models\Ticket;
 
 class Order extends Model
 {
-    protected $fillable = ['id_status', 'id_ticket_customers ', 'customer_name', 'customer_phone', 'customer_email'];
+    protected $fillable = ['id_status', 'id_ticket_customers ', 'payment_id', 'customer_name', 'customer_phone', 'customer_email'];
 
     public function tickets()
     {

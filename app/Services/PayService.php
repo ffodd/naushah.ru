@@ -3,35 +3,52 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
-use JustCommunication\TinkoffAcquiringAPIClient\TinkoffAcquiringAPIClient;
-use JustCommunication\TinkoffAcquiringAPIClient\API\InitRequest;
-use JustCommunication\TinkoffAcquiringAPIClient\Exception\TinkoffAPIException;
 
 class PayService
 {
-    function payInit($request, $orderId) {
-        $client = new TinkoffAcquiringAPIClient('1737453783839DEMO', '8D27OvFCF1n#9QSc');
-        $initRequest = new InitRequest(($request->price)*100, $orderId);
-        $initRequest
-            ->setLanguage($initRequest::LANGUAGE_RU)
-            ->setDescription('Аудио-экскурсия | '."$request->eventName")
-            ->setRecurrent('2')
-            ->setCustomerKey('3')
-            ->setNotificationURL('https://domain.tld/_api/notifications/124')
-            ->setSuccessURL('https://domain.tld/_api/success/124')
-            ->setFailURL('https://domain.tld/_api/fail/124')
-            ->setData([
-                'Foo' => 'bar'
-            ])
-        ;
-        try {
-            $response = $client->sendInitRequest($initRequest);
-            //$response->getPaymentId() // идентификатор платежа
+    function payInit($request, $orderId, $temporarySignedURL) {
+        //Формирование токена
+        $forToken = [
+            'TerminalKey' => config('payment.terminalKey'),
+            'Amount' => ($request->price)*100,
+            'OrderId' => $orderId,
+            'Description' => 'Спектакли-экскурсии | naushah.ru',
+            'Password' => config('payment.password'),
+            'SuccessURL' => $temporarySignedURL,
+            'FailURL' => config('payment.failURL'),
+        ];
+        ksort($forToken);
+        $stringBody = implode('', $forToken);
+        $token = hash('sha256', $stringBody);
 
-            header('Location: ' . $response->getPaymentURL()); // перенаправляем пользователя на страницу оплаты
-            exit;
-        } catch (TinkoffAPIException $e) {
-            // обработка ошибки
-        }
+        //Формирование тела запроса
+        $data = [
+            'Token' => $token,
+            'Receipt' => [
+                'Email' => $request->email,
+                'Phone' => $request->phone,
+                'Taxation' => config('payment.taxation'),
+                'Items' => [
+                    [
+                        'Name' => $request->eventName,
+                        'Price' => ($request->price)*100,
+                        'Quantity' => '1',
+                        'Amount' => ($request->price)*100,
+                        'Tax' => config('payment.tax')
+                    ]
+                ]
+            ]
+        ];
+
+        $data = array_merge($forToken, $data);
+
+        //Отправка запроса
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json'
+        ])->post('https://securepay.tinkoff.ru/v2/Init', $data);
+
+        $response = json_decode($response);
+
+        return($response);
     }
 }

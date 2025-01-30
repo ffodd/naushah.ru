@@ -18,7 +18,7 @@ class OrderService
         $ticketCustomer->surname = $request->input('surname');
         $ticketCustomer->email = $request->input('email');
         $ticketCustomer->save();
-        //Созданем заказ
+        //Создаем заказ
         $order = new Order();
         $order->id_status = '1';
         $order->customer_name = ($request->input('surname').' '.$request->input('name'));
@@ -32,5 +32,11 @@ class OrderService
         $order->tickets()->save($ticket);
 
         return($order->id);
+    }
+
+    //Формирование заказа в бд;
+    function updateOrder($orderID, $PaymentId) {
+        $order = Order::find($orderID);
+        $order->update(['payment_id' => "$PaymentId"]);
     }
 }
