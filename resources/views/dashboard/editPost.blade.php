@@ -24,35 +24,36 @@
     <div class="w-full mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
-                <form method="POST" action="{{ route('postsBack.store') }}">
+                <form method="POST" action="{{ route('postsBack.update') }}">
                     @csrf
+                    <input hidden type="text" value="{{$post->id}}" name="id">
                     <div class="mb-4">
                         <label class="text-xl text-gray-600">Название статьи <span class="text-red-500">*</span></label></br>
-                        <input type="text" class="border-2 border-gray-300 p-2 w-full" name="name" placeholder="название" required>
+                        <input type="text" value="{{$post->name}}" class="border-2 border-gray-300 p-2 w-full" name="name" placeholder="название" required>
                     </div>
 
                     <div class="mb-4">
                         <label class="text-xl text-gray-600">Описание<span class="text-red-500">*</span></label></br>
-                        <input type="text" class="border-2 border-gray-300 p-2 w-full" name="description" placeholder="описание" required>
+                        <input type="text" value="{{$post->description}}" class="border-2 border-gray-300 p-2 w-full" name="description" placeholder="описание" required>
                     </div>
 
                     <div class="mb-4">
                         <label class="text-xl text-gray-600">тег title (SEO)<span class="text-red-500">*</span></label></br>
-                        <input type="text" class="border-2 border-gray-300 p-2 w-full" name="seoTitle" placeholder="title" required>
+                        <input type="text" value="{{$post->seo_title}}" class="border-2 border-gray-300 p-2 w-full" name="seoTitle" placeholder="title" required>
                     </div>
 
                     <div class="mb-4">
                         <label class="text-xl text-gray-600">тег desctiption (SEO)<span class="text-red-500">*</span></label></br>
-                        <input type="text" class="border-2 border-gray-300 p-2 w-full" name="seoDescription" placeholder="desctiption" required>
+                        <input type="text" value="{{$post->seo_description}}" class="border-2 border-gray-300 p-2 w-full" name="seoDescription" placeholder="desctiption" required>
                     </div>
 
                     <div class="mb-8">
                         <label class="text-xl text-gray-600">Статья <span class="text-red-500">*</span></label></br>
-                        <x-wysiwyg-ckeditor content=""/>
+                        <x-wysiwyg-ckeditor :content="$post->content"/>
                     </div>
 
                     <div class="flex p-1">
-                        <button role="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400">Опубликовать</button>
+                        <button role="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400">Сохранить</button>
                     </div>
                 </form>
             </div>

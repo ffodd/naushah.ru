@@ -2,9 +2,9 @@
 
 return [
     //Терминал;
-    'terminalKey' => '1737453783839DEMO',
+    'terminalKey' => '1737453783887',
     //Пароль;
-    'password' => '8D27OvFCF1n#9QSc',
+    'password' => 'BgkImaofdF&LwRcS',
     //Система налогообложения;
     'taxation' => 'usn_income_outcome',
     //НДС;

@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use Spatie\LaravelPdf\Facades\Pdf;
+
 use App\Models\Order;
 use App\Models\Ticket;
 
@@ -15,5 +17,8 @@ class TicketService
 
         $tickets = $order->tickets();
 
+        Pdf::view('sampleTicket-1', $tickets)->save('./tickets/ticket-'.$tickets->id.'.pdf');
+
+        return($order);
     }
 }

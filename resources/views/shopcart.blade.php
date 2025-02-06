@@ -81,9 +81,9 @@
                 @enderror
             </div>
         </div>
-        <input type="submit" class="py-2.5 px-6 mt-6 font-medium text-white bg-gray-700 cursor-pointer rounded-2xl hover:bg-gray-900 component-selected">
+        <input type="submit" value="Купить" class="py-2.5 px-6 mt-6 font-medium text-white bg-gray-700 cursor-pointer rounded-2xl hover:bg-gray-900 component-selected">
     </form>
-    <p class="text-gray-500 text-xs mt-1">Нажимая кнопку «оплатить», вы принимаете условия пользовательского соглашения.</p>
+    <p class="text-gray-500 text-xs mt-1">Нажимая кнопку «оплатить», вы принимаете условия <a href="{{ route('agreement.index') }}" target="_blank" class="text-black text-sm" >пользовательского соглашения</a>.</p>
 </section>
 @endsection
 

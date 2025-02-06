@@ -191,7 +191,7 @@
   <div id="default-tab-content">
       <div class="hidden p-5 rounded-lg bg-gray-50" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <div class="text-sm mb-6 text-gray-600 text-justify items-center flex flex-col lg:flex-row gap-10">
-          <p class="lg:w-3/4 leading-relaxed self-start">{{$event->desc}}</p>
+          <div class="lg:w-3/4 leading-relaxed self-start">{!!$event->desc!!}</div>
           <div class="lg:w-1/4">       
             <div class="relative mx-auto border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[512px] w-[300px]">
                 <div class="h-[32px] w-[3px] bg-gray-800 absolute -start-[17px] top-[72px] rounded-s-lg"></div>

@@ -9,6 +9,34 @@ use App\Models\EventType;
 
 class EventController extends Controller
 {
+    //Отобразить все события (админка)
+    public function indexBack()
+    {
+        $events = EventName::get();
+        return view('dashboard.indexEvent')->with('events', $events);     
+    }
+    //Отобразить форму редактирования события (админка)
+    public function editBack(string $id)
+    {
+        $event = EventName::find($id);
+        return view('dashboard.editEvent')->with('event', $event);
+    }
+    //Обновить событие (админка)
+    public function updateBack(Request $request)
+    {
+        $post = EventName::find($request->input('id'));
+        $post->update([
+            'name' => $request->input('name'),
+            'price' => $request->input('price'),  
+            'duration' => $request->input('duration'), 
+            'length' => $request->input('length'), 
+            'availability_time' => $request->input('availability_time'),   
+            'starting_point' => $request->input('starting_point'),  
+            'finish_point' => $request->input('finish_point'),            
+            'desc' => $request->input('content'),
+        ]);
+        return redirect()->route('eventsBack.index');
+    }
     /**
      * Display a listing of the resource.
      */

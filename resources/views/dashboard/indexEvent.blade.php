@@ -13,7 +13,7 @@
 @endpush('scriptsHead')
 
 @section('title')
-  Статьи | naushah.ru
+  Экскурсии | naushah.ru
 @endsection
 
 @section('header')
@@ -34,12 +34,12 @@
                 </div>
 
                 <div class="flex items-center mt-4 gap-x-3">
-                    <a href="{{ route('postsBack.create') }}" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-blue-600">
+                    <a href="" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-blue-600">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
 
-                        <span>Добавить статью</span>
+                        <span>Добавить экскурсию</span>
                     </a>
                 </div>
             </div>
@@ -65,12 +65,11 @@
                                             </button>
                                         </th>
 
-                                        <th scope="col" class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                                            Статус
-                                        </th>
-
                                         <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
                                             Название
+                                        </th>
+                                        <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                            Стоимость
                                         </th>
                                         <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
                                             Дата создания
@@ -84,35 +83,35 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
-                                    @foreach ($posts as $post)
+                                    @foreach ($events as $event)
                                     <tr>
-                                        <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
+                                        <td class="px-4 text-sm font-medium whitespace-nowrap">
                                             <div>
-                                                <p class="font-medium text-gray-800">{{$post->id}}</p>
+                                                <p class="font-medium text-gray-800">{{$event->id}}</p>
                                             </div>
                                         </td>
-                                        <td class="px-12 py-4 text-sm font-medium whitespace-nowrap">
-                                            <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60">
-                                                Опубликовано
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                        <td class="px-4 text-sm whitespace-nowrap">
                                             <div>
-                                                <p class="text-gray-700">{{$post->name}}</p>
+                                                <p class="text-gray-700">{{$event->name}}</p>
                                             </div>
                                         </td>
-                                        <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                        <td class="px-4 text-sm whitespace-nowrap">
                                             <div>
-                                                <p class="text-gray-7000">{{$post->created_at}}</p>
+                                                <p class="text-gray-700">{{$event->price}}</p>
                                             </div>
                                         </td>
-                                        <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                        <td class="px-4 text-sm whitespace-nowrap">
                                             <div>
-                                                <p class="text-gray-700">{{$post->updated_at}}</p>
+                                                <p class="text-gray-7000"></p>
                                             </div>
                                         </td>
-                                        <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                            <a href="{{ url('/dashboard/editPost/').'/'.$post->id}}" class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg hover:bg-gray-100">
+                                        <td class="px-4 text-sm whitespace-nowrap">
+                                            <div>
+                                                <p class="text-gray-700"></p>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 text-sm whitespace-nowrap">
+                                            <a href="{{ url('/dashboard/editEvent/').'/'.$event->id}}" class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg hover:bg-gray-100">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
                                                 </svg>

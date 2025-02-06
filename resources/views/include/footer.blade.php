@@ -17,7 +17,6 @@
                 </div>
             </ul>
             <p class="mt-3 text-xs leading-tight text-gray-500 sm:mt-0"> © На Ушах 2025</p>
-
         </div>
     </div>
 </footer>

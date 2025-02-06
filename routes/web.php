@@ -10,11 +10,18 @@ use App\Http\Controllers\HotelController;
 use App\Http\Controllers\PayController;
 use App\Http\Controllers\PostController;
 
+use App\Http\Controllers\TestController;
 
 
 Route::get('/', EventsHomePageController::class)->name('home.index');
 Route::get('/contact', function () {return view('contact');})->name('contact.index');
 Route::get('/faq', function () {return view('faq');})->name('faq.index');
+Route::get('/agreement', function () {return view('agreement');})->name('agreement.index');
+
+Route::get('/pupa', [TestController::class, 'test'])->name('test');
+
+Route::get('/preview-1', function () {return view('prew-1');});
+Route::get('/preview-4', function () {return view('prew-4');});
 
 //ShopCartController
 Route::get('/shopcart/{id}', [ShopCartController::class, 'show'])->name('shopcart.index');
@@ -27,6 +34,10 @@ Route::get('/excursions', function () {return view('excursions');})->name('excur
 
 //EventController
 Route::get('/event-info/{id}', [EventController::class, 'show'])->name('event.show');
+
+//PostController
+Route::get('/posts', [PostController::class, 'indexFront'])->name('posts.index');
+Route::get('/posts/{id}', [PostController::class, 'showFront'])->name('posts.show');
 
 //HotelController
 Route::get('/hotels', [HotelController::class, 'index'])->name('hotels.index');
@@ -43,8 +54,16 @@ Route::get('/shopcart/pay/{orderId}', [PayController::class, 'createTicket'])->n
 
 //Админка
 Route::get('/dashboard', function () {return view('dashboard.dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/dashboard/createPost', [PostController::class, 'create'])->middleware(['auth', 'verified'])->name('posts.create');
-Route::post('/dashboard/createPost', [PostController::class, 'store'])->middleware(['auth', 'verified'])->name('posts.store');
-Route::get('/dashboard/indexPost', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('posts.index');
+    //Статьи
+Route::get('/dashboard/indexPost', [PostController::class, 'indexBack'])->middleware(['auth', 'verified'])->name('postsBack.index');
+Route::get('/dashboard/createPost', [PostController::class, 'createBack'])->middleware(['auth', 'verified'])->name('postsBack.create');
+Route::post('/dashboard/createPost', [PostController::class, 'storeBack'])->middleware(['auth', 'verified'])->name('postsBack.store');
+Route::get('/dashboard/editPost/{id}', [PostController::class, 'editBack'])->middleware(['auth', 'verified'])->name('postsBack.edit');
+Route::post('/dashboard/updatePost', [PostController::class, 'updateBack'])->middleware(['auth', 'verified'])->name('postsBack.update');
+//События
+Route::get('/dashboard/indexEvent', [EventController::class, 'indexBack'])->middleware(['auth', 'verified'])->name('eventsBack.index');
+Route::get('/dashboard/editEvent/{id}', [EventController::class, 'editBack'])->middleware(['auth', 'verified'])->name('eventsBack.edit');
+Route::post('/dashboard/updateEvent', [EventController::class, 'updateBack'])->middleware(['auth', 'verified'])->name('eventsBack.update');
 
 require __DIR__.'/auth.php';
+
